@@ -168,4 +168,4 @@ export const ChannelValuePlayground = (): JSX.Element => (
 
 ```
 
-![Alt text](https://raw.githubusercontent.com/etn-ccis/blui-react-documentation-components/main/media/example.png)
+![ChannelValue Example](https://raw.githubusercontent.com/etn-ccis/blui-react-documentation-components/main/media/example.png)
