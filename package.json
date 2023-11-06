@@ -1,6 +1,6 @@
 {
   "name": "@brightlayer-ui/react-doc-components",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "description": "A library of re-usable react components used to build component documentation similar to storybook",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -36,8 +36,7 @@
   "dependencies": {
     "color": "^4.0.0",
     "lodash.debounce": "^4.0.8",
-    "lodash.groupby": "^4.6.0",
-    "prismjs": "^1.29.0"
+    "lodash.groupby": "^4.6.0"
   },
   "peerDependencies": {
     "@brightlayer-ui/react-components": "^6.3.0",
@@ -45,9 +44,11 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.16",
     "@mui/material": "^5.14.16",
-    "react": "^18.2.0"
+    "react": "^18.2.0",
+    "prismjs": "^1.29.0"
   },
   "devDependencies": {
+    "prismjs": "^1.29.0",
     "@brightlayer-ui/eslint-config": "^3.0.1",
     "@brightlayer-ui/prettier-config": "^1.0.3",
     "@brightlayer-ui/react-components": "^6.3.0",
