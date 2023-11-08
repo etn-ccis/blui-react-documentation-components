@@ -154,12 +154,13 @@ const ChannelValuePreview: PreviewComponent = ({ data }) => {
 const generateSnippet: CodeSnippetFunction = (data) =>
     `<ChannelValue 
 	${getPropsToString(getPropsMapping(data, inputConfig), { join: '\n\t', skip: ['icon', 'htmlColor'] })}
-  	${data.icon && data.icon !== 'undefined'
-          ? `icon={${(data.icon as string).replace('/>', '')}fontSize={'inherit'}${
-                data.htmlColor && data.htmlColor !== 'undefined' ? ` htmlColor={'${data.htmlColor as string}'}` : ''
-            } />}`
-          : ''
-  }
+  	${
+        data.icon && data.icon !== 'undefined'
+            ? `icon={${(data.icon as string).replace('/>', '')}fontSize={'inherit'}${
+                  data.htmlColor && data.htmlColor !== 'undefined' ? ` htmlColor={'${data.htmlColor as string}'}` : ''
+              } />}`
+            : ''
+    }
 />`.replace(/^\s*$(?:\r\n?|\n)/gm, '');
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args

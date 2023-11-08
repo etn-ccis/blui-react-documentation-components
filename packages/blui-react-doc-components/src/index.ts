@@ -7,3 +7,4 @@ export * from './components/PlaygroundCodeBlock';
 export * from './components/PlaygroundDrawer';
 export * from './components/PlaygroundPreview';
 export * from './components/input-controls';
+export * from './components/CopyToClipboardButton';
