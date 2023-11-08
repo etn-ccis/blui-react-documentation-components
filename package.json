@@ -1,90 +1,14 @@
 {
-  "name": "@brightlayer-ui/react-doc-components",
-  "version": "1.0.0-alpha.1",
-  "description": "A library of re-usable react components used to build component documentation similar to storybook",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/index.d.ts",
-  "author": "Brightlayer UI <brightlayer-ui@eaton.com>",
-  "license": "BSD-3-Clause",
-  "bugs": {
-    "url": "https://github.com/etn-ccis/blui-react-doc-tools/issues"
-  },
-  "homepage": "https://github.com/etn-ccis/blui-react-doc-tools#readme",
-  "scripts": {
-    "build": "rollup -c",
-    "lint": "eslint \"src/**/**.{tsx,ts}\"",
-    "lint:fix": "eslint \"src/**/**.{tsx,ts}\" --fix",
-    "prettier": "prettier \"src/**/**.{ts,tsx,js,jsx,json,css,scss,html}\" --write",
-    "prettier:check": "prettier \"src/**/**.{ts,tsx,js,jsx,json,css,scss,html}\" --check",
-    "precommit": "yarn prettier && yarn lint"
-  },
-  "prettier": "@brightlayer-ui/prettier-config",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/etn-ccis/blui-react-doc-tools.git"
-  },
-  "keywords": [
-    "react",
-    "components",
-    "docs",
-    "storybook",
-    "playground",
-    "code",
-    "snippet"
+  "name": "blui-react-doc-tools",
+  "private": true,
+  "version": "0.0.1",
+  "description": "",
+  "packageManager": "yarn@3.6.1",
+  "workspaces": [
+    "packages/*",
+    "demos/*"
   ],
-  "dependencies": {
-    "color": "^4.0.0",
-    "lodash.debounce": "^4.0.8",
-    "lodash.groupby": "^4.6.0"
-  },
-  "peerDependencies": {
-    "@brightlayer-ui/react-components": "^6.3.0",
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.14.16",
-    "@mui/material": "^5.14.16",
-    "react": "^18.2.0",
-    "prismjs": "^1.29.0"
-  },
-  "devDependencies": {
-    "prismjs": "^1.29.0",
-    "@brightlayer-ui/eslint-config": "^3.0.1",
-    "@brightlayer-ui/prettier-config": "^1.0.3",
-    "@brightlayer-ui/react-components": "^6.3.0",
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.14.16",
-    "@mui/material": "^5.14.16",
-    "@rollup/plugin-commonjs": "^25.0.7",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-terser": "^0.4.4",
-    "@rollup/plugin-typescript": "^11.1.5",
-    "@types/color": "^3.0.5",
-    "@types/lodash.debounce": "^4.0.8",
-    "@types/lodash.groupby": "^4.6.7",
-    "@types/prismjs": "^1.26.2",
-    "@types/react": "^18.2.36",
-    "jest-environment-jsdom": "^29.7.0",
-    "prettier": "^3.0.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "rollup": "^4.3.0",
-    "rollup-plugin-dts": "^6.1.0",
-    "tslib": "^2.6.2",
-    "typescript": "^5.2.2",
-    "@typescript-eslint/eslint-plugin": "^5.14.0",
-    "@typescript-eslint/parser": "^5.14.0",
-    "eslint": "^8.53.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-jest-dom": "^5.0.0",
-    "eslint-plugin-react": "^7.33.0",
-    "eslint-plugin-testing-library": "^6.0.0"
-  },
-  "files": [
-    "dist/",
-    "CHANGELOG.md",
-    "README.md",
-    "LICENSE"
-  ]
+  "scripts": {
+    "start": "cd demos/storybook && yarn storybook"
+  }
 }
