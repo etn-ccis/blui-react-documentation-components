@@ -42,7 +42,7 @@ export const getPropValueBinding = (value: FieldValue): string => {
             return value === true ? '' : `={${value.toString()}}`;
         case 'string':
         default:
-            return `={'${value}'}`;
+            return value.includes(`'`) ?  `={\`${value}\`}` :  `={'${value}'}`;
     }
 };
 
