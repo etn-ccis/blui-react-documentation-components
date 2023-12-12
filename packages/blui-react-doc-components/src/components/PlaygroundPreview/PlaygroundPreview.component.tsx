@@ -8,7 +8,13 @@ export const PlaygroundPreview: React.FC<PlaygroundPreviewProps> = (props) => {
     const { data, previewComponent: PreviewComponent } = usePlaygroundValues();
 
     return (
-        <Box sx={[{ flex: '2 2 0px' }, ...(Array.isArray(sx) ? sx : [sx])]} {...other}>
+        <Box
+            sx={[
+                { flex: '2 2 0px', backgroundColor: 'background.default', overflowY: 'auto' },
+                ...(Array.isArray(sx) ? sx : [sx]),
+            ]}
+            {...other}
+        >
             <PreviewComponent data={data} />
         </Box>
     );

@@ -25,7 +25,7 @@ export const PlaygroundCheckbox: React.FC<PlaygroundBooleanInput> = (props) => {
             key={id}
             control={
                 <Checkbox
-                    checked={(data[id] || initialValue) as boolean}
+                    checked={(data[id] ?? initialValue) as boolean}
                     name={label || id}
                     color="primary"
                     onChange={(event): void => updateData(id, event.target.checked)}

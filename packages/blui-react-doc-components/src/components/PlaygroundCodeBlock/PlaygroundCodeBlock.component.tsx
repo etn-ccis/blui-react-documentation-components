@@ -32,6 +32,7 @@ export const PlaygroundCodeBlock: React.FC<PlaygroundCodeBlockProps> = (props) =
                     '.line-highlight::after': { display: 'none' },
                     display: 'flex',
                     fontSize: smallFont ? '0.875rem' : undefined,
+                    overflow: 'auto',
                 },
                 ...(Array.isArray(sx) ? sx : [sx]),
             ]}

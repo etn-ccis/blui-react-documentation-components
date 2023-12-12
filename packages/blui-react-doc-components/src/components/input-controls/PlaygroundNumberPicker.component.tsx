@@ -50,7 +50,8 @@ export const PlaygroundNumberPicker: React.FC<PlaygroundNumberInput> = (props) =
                 onChange={(e): void => {
                     // only allow numeric values to be typed in
                     if (e.target.value && !/^\d+(?:[.]\d+)?$/.test(e.target.value)) return;
-                    updateData(props.id, parseInt(e.target.value, 10));
+                    const numericValue = parseInt(e.target.value, 10);
+                    updateData(props.id, isNaN(numericValue) ? '' : numericValue);
                 }}
                 onClick={handleOpen}
                 inputProps={{

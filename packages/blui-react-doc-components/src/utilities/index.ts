@@ -42,7 +42,25 @@ export const getPropValueBinding = (value: FieldValue): string => {
             return value === true ? '' : `={${value.toString()}}`;
         case 'string':
         default:
-            return value.includes(`'`) ?  `={\`${value}\`}` :  `={'${value}'}`;
+            return value.includes(`'`) ? `={\`${value}\`}` : `={'${value}'}`;
+    }
+};
+
+/**
+ *
+ * @param value the value of a particular component prop
+ * @returns a string representation of the correct JSX binding expression based on the value type
+ */
+export const getPropValueObject = (value: FieldValue): string => {
+    if (value === undefined || value === 'undefined') return '={ undefined }';
+    switch (typeof value) {
+        case 'number':
+            return `: ${value},`;
+        case 'boolean':
+            return value === true ? '' : `: ${value.toString()},`;
+        case 'string':
+        default:
+            return value.includes(`'`) ? `: \`${value}\`,` : `: '${value}',`;
     }
 };
 
@@ -52,12 +70,17 @@ export const getPropValueBinding = (value: FieldValue): string => {
  * @param config optional configuration options (custom separator character and/or omit certain values)
  * @returns a string representation of the data parameter properly mapped to JSX bindings
  */
-export const getPropsToString = (data: ComponentData, config: { join?: string; skip?: string[] } = {}): string => {
-    const { join = ' ', skip = [] } = config;
+export const getPropsToString = (
+    data: ComponentData,
+    config: { join?: string; skip?: string[]; format?: 'object' | 'jsx' } = {}
+): string => {
+    const { join = ' ', skip = [], format = 'jsx' } = config;
     const values: string[] = [];
     Object.keys(data).forEach((prop) => {
         if (!skip.includes(prop)) {
-            values.push(`${prop}${getPropValueBinding(data[prop])}`);
+            values.push(
+                `${prop}${format === 'jsx' ? getPropValueBinding(data[prop]) : getPropValueObject(data[prop])}`
+            );
         }
     });
     return values.join(join);
