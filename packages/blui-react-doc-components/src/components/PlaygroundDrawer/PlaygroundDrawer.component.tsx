@@ -70,6 +70,8 @@ export const PlaygroundDrawer: React.FC<PlaygroundDrawerProps> = (props) => {
                                 '&:before': {
                                     display: 'none',
                                 },
+                                backgroundImage: 'none',
+                                backgroundColor: 'transparent',
                             }}
                         >
                             <AccordionSummary expandIcon={<ExpandMore sx={{ color: 'primary.main' }} />}>
@@ -180,7 +182,7 @@ export const PlaygroundDrawer: React.FC<PlaygroundDrawerProps> = (props) => {
                     rightComponent={
                         <IconButton>{mobileDrawerOpen ? <KeyboardArrowDown /> : <KeyboardArrowUp />}</IconButton>
                     }
-                    backgroundColor="white"
+                    backgroundColor={theme.palette.background.paper}
                     sx={{ position: 'fixed', bottom: 0, width: '100%', boxShadow: 4 }}
                 />
             )}
