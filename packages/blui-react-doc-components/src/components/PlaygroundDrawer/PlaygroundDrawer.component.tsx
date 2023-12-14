@@ -25,6 +25,7 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import * as BLUIColors from '@brightlayer-ui/colors';
 
 const getInputByType: (input: PlaygroundInput) => JSX.Element = (input) => {
     switch (input.type) {
@@ -71,7 +72,7 @@ export const PlaygroundDrawer: React.FC<PlaygroundDrawerProps> = (props) => {
                                     display: 'none',
                                 },
                                 backgroundImage: 'none',
-                                backgroundColor: 'transparent',
+                                backgroundColor: 'background.paper',
                             }}
                         >
                             <AccordionSummary expandIcon={<ExpandMore sx={{ color: 'primary.main' }} />}>
@@ -105,6 +106,8 @@ export const PlaygroundDrawer: React.FC<PlaygroundDrawerProps> = (props) => {
                                 fontFamily: '"Roboto Mono", monospace',
                             },
                             zIndex: (t) => t.zIndex.appBar - 1,
+                            backgroundImage: 'none',
+                            backgroundColor: theme.palette.mode === 'dark' ? BLUIColors.darkBlack[300] : undefined,
                         },
                         ...(Array.isArray(paperSx) ? paperSx : [paperSx]),
                     ],
