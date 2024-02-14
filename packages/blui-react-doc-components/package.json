@@ -1,6 +1,6 @@
 {
   "name": "@brightlayer-ui/react-doc-components",
-  "version": "1.0.0-alpha.10",
+  "version": "1.0.0-alpha.11",
   "description": "A library of re-usable react components used to build component documentation similar to storybook",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
