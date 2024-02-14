@@ -10,7 +10,7 @@ export const PlaygroundPreview: React.FC<PlaygroundPreviewProps> = (props) => {
     return (
         <Box
             sx={[
-                { flex: '2 2 0px', backgroundColor: 'background.default', overflowY: 'auto', pb: {xs: 8, md: 0} },
+                { flex: '2 2 0px', backgroundColor: 'background.default', overflowY: 'auto', pb: {xs: 9, md: 0} },
                 ...(Array.isArray(sx) ? sx : [sx]),
             ]}
             {...other}
