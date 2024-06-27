@@ -126,10 +126,9 @@ export const PlaygroundDrawer: React.FC<PlaygroundDrawerProps> = (props) => {
                         <InfoListItem
                             hidePadding
                             title={<Typography variant="h6">Props & Code</Typography>}
-                            rightComponent={
-                                <IconButton onClick={(): void => setMobileDrawerOpen((o) => !o)}>
-                                    {mobileDrawerOpen ? <KeyboardArrowDown /> : <KeyboardArrowUp />}
-                                </IconButton>
+                            rightComponent={<IconButton onClick={(): void => setMobileDrawerOpen((o) => !o)}>
+                                {mobileDrawerOpen ? <KeyboardArrowDown /> : <KeyboardArrowUp />}
+                            </IconButton>
                             }
                         />
                         <Tabs
@@ -187,7 +186,7 @@ export const PlaygroundDrawer: React.FC<PlaygroundDrawerProps> = (props) => {
                     }
                     backgroundColor={theme.palette.background.paper}
                     sx={{ position: 'fixed', bottom: 0, width: '100%', boxShadow: 4 }}
-                />
+                    />
             )}
         </>
     );

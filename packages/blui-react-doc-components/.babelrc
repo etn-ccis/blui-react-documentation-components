@@ -1,0 +1,16 @@
+{
+       "plugins": [
+         "@babel/plugin-transform-runtime",
+         "@babel/plugin-proposal-class-properties",
+         "@babel/plugin-proposal-object-rest-spread",
+         "@babel/plugin-transform-react-jsx",
+         "@babel/plugin-transform-react-display-name",
+         "@babel/plugin-transform-react-jsx-self",
+         "@babel/plugin-transform-react-jsx-source"
+       ],
+    "presets": [
+         "@babel/env",
+         ["@babel/preset-react", { "runtime": "automatic" }],
+         "@babel/preset-typescript"
+       ]
+    }
