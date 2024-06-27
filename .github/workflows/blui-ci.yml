@@ -1,0 +1,116 @@
+name: Build
+
+on:
+  push:
+    branches: [ "dev", "main" ]
+  pull_request:
+    branches: [ "dev", "main" ]
+  pull_request_target:
+    types:
+      - opened
+    branches:
+      - '*/*'
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  prettier_lint:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'yarn'
+    - run: yarn --immutable
+    - run: yarn prettier:check
+      working-directory: packages/blui-react-doc-components
+    - run: yarn lint
+      working-directory: packages/blui-react-doc-components
+
+  unit_test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'yarn'
+    - run: yarn --immutable
+    - run: yarn coverage
+      working-directory: packages/blui-react-doc-components
+    - name: Upload to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        directory: ./packages/blui-react-doc-components/coverage/
+        files: clover.xml
+        flags: unittests
+        name: codecov-report
+        verbose: true
+
+  build_react_doc_components:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'yarn'
+    - run: yarn --immutable
+    - run: yarn build
+      working-directory: packages/blui-react-doc-components
+    - name: Save build
+      uses: actions/upload-artifact@v3
+      with:
+        name: dist
+        if-no-files-found: error
+        path: packages/blui-react-doc-components/dist
+
+  publish_react_doc_components:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev') }}
+    needs: build_react_doc_components
+    strategy:
+      matrix:
+        node-version: [20.x]
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      BRANCH: ${{ github.ref == 'refs/heads/main' && 'main' || 'dev' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download dist
+        uses: actions/download-artifact@v3
+        with:
+          name: dist
+          path: packages/blui-react-doc-components/dist
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: 'https://registry.npmjs.org'
+      - run: yarn --immutable
+      - run: npm run publish:package -- -b ${{env.BRANCH}}
+        working-directory: packages/blui-react-doc-components
