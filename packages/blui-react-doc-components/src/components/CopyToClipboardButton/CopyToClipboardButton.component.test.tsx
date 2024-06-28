@@ -3,8 +3,6 @@ import '@testing-library/jest-dom';
 import { cleanup, render, screen } from '@testing-library/react';
 import { CopyToClipboardButton } from './CopyToClipboardButton.component';
 
-const copyTextToClipboard = jest.fn();
-
 afterEach(cleanup);
 
 describe('CopyToClipboardButton', () => {

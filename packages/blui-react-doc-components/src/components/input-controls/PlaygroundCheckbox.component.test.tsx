@@ -1,10 +1,8 @@
 import React from 'react';
-import { cleanup, render, screen, fireEvent } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import { PlaygroundCheckbox } from './PlaygroundCheckbox.component';
 
 describe('PlaygroundCheckbox', () => {
-    const mockUpdateData = jest.fn();
-
     beforeEach(() => {
         jest.clearAllMocks();
     });

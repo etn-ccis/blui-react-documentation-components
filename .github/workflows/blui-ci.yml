@@ -2,9 +2,9 @@ name: Build
 
 on:
   push:
-    branches: [ "dev", "main" ]
+    branches: [ "dev", "master" ]
   pull_request:
-    branches: [ "dev", "main" ]
+    branches: [ "dev", "master" ]
   pull_request_target:
     types:
       - opened
@@ -92,14 +92,14 @@ jobs:
 
   publish_react_doc_components:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev') }}
+    if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/dev') }}
     needs: build_react_doc_components
     strategy:
       matrix:
         node-version: [20.x]
     env:
       NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      BRANCH: ${{ github.ref == 'refs/heads/main' && 'main' || 'dev' }}
+      BRANCH: ${{ github.ref == 'refs/heads/master' && 'master' || 'dev' }}
     steps:
       - uses: actions/checkout@v4
       - name: Download dist
