@@ -1,3 +1,5 @@
+[![Build](https://github.com/etn-ccis/blui-react-documentation-components/actions/workflows/blui-ci.yml/badge.svg?branch=master)](https://github.com/etn-ccis/blui-react-documentation-components/actions/workflows/blui-ci.yml) ![npm](https://img.shields.io/npm/v/@brightlayer-ui/react-doc-components?label=%40brightlayer-ui%2Freact-doc-components) 
+
 # React Documentation Components
 
 This library contains components that are used to build component documentation. They can be used to create "Playground" pages, which are similar to Storybook stories, but built using the BLUI design standards and components. These playground pages allows a user to toggle different values for various configurable properties and then see a running code example and code snippet that reflect the selected values.
