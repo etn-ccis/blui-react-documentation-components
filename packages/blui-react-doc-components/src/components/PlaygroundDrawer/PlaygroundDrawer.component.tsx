@@ -109,7 +109,7 @@ export const PlaygroundDrawer: React.FC<PlaygroundDrawerProps> = (props) => {
                             backgroundImage: 'none',
                             ...theme.applyStyles('dark', {
                                 backgroundColor: BLUIColors.darkBlack[300],
-                            })
+                            }),
                         },
                         ...(Array.isArray(paperSx) ? paperSx : [paperSx]),
                     ],
