@@ -107,7 +107,9 @@ export const PlaygroundDrawer: React.FC<PlaygroundDrawerProps> = (props) => {
                             },
                             zIndex: (t) => t.zIndex.appBar - 1,
                             backgroundImage: 'none',
-                            backgroundColor: theme.palette.mode === 'dark' ? BLUIColors.darkBlack[300] : undefined,
+                            ...theme.applyStyles('dark', {
+                                backgroundColor: BLUIColors.darkBlack[300],
+                            }),
                         },
                         ...(Array.isArray(paperSx) ? paperSx : [paperSx]),
                     ],
