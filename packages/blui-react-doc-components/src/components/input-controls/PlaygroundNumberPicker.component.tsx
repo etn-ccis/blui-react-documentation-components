@@ -115,7 +115,7 @@ export const PlaygroundNumberPicker: React.FC<PlaygroundNumberInput> = (props) =
                             min={minValue}
                             max={maxValue}
                             sx={{ width: '100%' }}
-                            onChange={(_event, value): void => updateData(props.id, value as number)}
+                            onChange={(_event, value): void => updateData(props.id, value)}
                         />
                     </ClickAwayListener>
                 </Paper>

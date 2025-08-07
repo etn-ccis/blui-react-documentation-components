@@ -2,9 +2,7 @@ import { createContext, useContext } from 'react';
 import { CodeSnippetFunction, FieldValue, InputConfig, PreviewComponent } from '../types/Playground.types';
 
 type PlaygroundValuesContextProps = {
-    data: {
-        [key: string]: FieldValue;
-    };
+    data: Record<string, FieldValue>;
     updateData: (id: string, value: FieldValue) => void;
     inputConfig: InputConfig;
     codeSnippet: CodeSnippetFunction;
