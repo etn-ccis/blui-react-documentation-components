@@ -27,7 +27,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import * as BLUIColors from '@brightlayer-ui/colors';
 
-const getInputByType: (input: PlaygroundInput) => JSX.Element = (input) => {
+const getInputByType: (input: PlaygroundInput) => React.JSX.Element = (input) => {
     switch (input.type) {
         case 'select':
             return <PlaygroundSelect key={input.id} {...input} />;
@@ -82,7 +82,7 @@ export const PlaygroundDrawer: React.FC<PlaygroundDrawerProps> = (props) => {
                             </AccordionSummary>
                             <AccordionDetails>
                                 <Stack gap={2}>
-                                    {groupedInputs[category].map((i): JSX.Element => getInputByType(i))}
+                                    {groupedInputs[category].map((i): React.JSX.Element => getInputByType(i))}
                                 </Stack>
                             </AccordionDetails>
                         </Accordion>
@@ -96,24 +96,26 @@ export const PlaygroundDrawer: React.FC<PlaygroundDrawerProps> = (props) => {
     return (
         <>
             <Drawer
-                PaperProps={{
-                    sx: [
-                        {
-                            width: isMobile ? '100%' : 350,
-                            height: isMobile ? '70%' : undefined,
-                            position: isMobile ? 'fixed' : 'static',
-                            '& .MuiInputBase-root, & .MuiFormControlLabel-label': {
-                                fontFamily: '"Roboto Mono", monospace',
+                slotProps={{
+                    paper: {
+                        sx: [
+                            {
+                                width: isMobile ? '100%' : 350,
+                                height: isMobile ? '70%' : undefined,
+                                position: isMobile ? 'fixed' : 'static',
+                                zIndex: (t) => t.zIndex.appBar - 1,
+                                backgroundImage: 'none',
+                                '& .MuiInputBase-root, & .MuiFormControlLabel-label': {
+                                    fontFamily: '"Roboto Mono", monospace',
+                                },
+                                ...theme.applyStyles('dark', {
+                                    backgroundColor: BLUIColors.darkBlack[300],
+                                }),
                             },
-                            zIndex: (t) => t.zIndex.appBar - 1,
-                            backgroundImage: 'none',
-                            ...theme.applyStyles('dark', {
-                                backgroundColor: BLUIColors.darkBlack[300],
-                            }),
-                        },
-                        ...(Array.isArray(paperSx) ? paperSx : [paperSx]),
-                    ],
-                    ...paperProps,
+                            ...(Array.isArray(paperSx) ? paperSx : [paperSx]),
+                        ],
+                        ...paperProps,
+                    },
                 }}
                 ModalProps={{ keepMounted: true }}
                 onClose={(): void => setMobileDrawerOpen(false)}
