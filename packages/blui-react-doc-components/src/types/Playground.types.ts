@@ -3,9 +3,7 @@ import { TextFieldProps } from '@mui/material/TextField';
 import { ComponentType } from 'react';
 
 export type FieldValue = string | number | boolean | undefined;
-export type ComponentData = {
-    [key: string]: FieldValue;
-};
+export type ComponentData = Record<string, FieldValue>;
 /**
  * Configuration options for which inputs you wish to see in the drawer
  */
@@ -13,11 +11,11 @@ export type InputConfig = PlaygroundInput[];
 /**
  * A function that returns a string / code snippet based on the values of the input data provided
  */
-export type CodeSnippetFunction = (data: { [key: string]: FieldValue }) => string;
+export type CodeSnippetFunction = (data: Record<string, FieldValue>) => string;
 /**
  * A component to render as the preview based on the values of the input data provided
  */
-export type PreviewComponent = ComponentType<{ data: { [key: string]: FieldValue } }>;
+export type PreviewComponent = ComponentType<{ data: Record<string, FieldValue> }>;
 
 export type PlaygroundInputType = 'string' | 'number' | 'color' | 'select' | 'boolean';
 export type CommonPlaygroundInputProps<T> = {

@@ -1,7 +1,7 @@
 import React from 'react';
-import type { Preview } from "@storybook/react";
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { blueDark as blue } from '@brightlayer-ui/react-themes';
+import type { Preview } from "@storybook/react-vite";
+import { ThemeProvider } from '@mui/material/styles';
+import { theme } from '@brightlayer-ui/react-themes';
 import { CssBaseline } from '@mui/material';
 
 const preview: Preview = {
@@ -16,7 +16,7 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => (
-      <ThemeProvider theme={createTheme(blue)}>
+      <ThemeProvider theme={theme}>
         <CssBaseline />
         {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
         <Story />

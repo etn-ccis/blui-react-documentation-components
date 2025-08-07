@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
     Playground as BLUIPlaygroundPage,
     CodeSnippetFunction,
@@ -132,7 +132,7 @@ const inputConfig: InputConfig = [
 
 const ChannelValuePreview: PreviewComponent = ({ data }) => {
     const { htmlColor, icon, ...rest } = data as unknown as ChannelValueProps & { htmlColor: string };
-    const getIcon = (value: string): JSX.Element | undefined => {
+    const getIcon = (value: string): React.JSX.Element | undefined => {
         switch (value) {
             case '<TrendingUp />':
                 return <TrendingUp htmlColor={htmlColor || 'inherit'} />;

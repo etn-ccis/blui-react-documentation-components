@@ -19,11 +19,11 @@ export const Playground: React.FC<PlaygroundProps> = ({
     previewComponent,
     sx,
     ...other
-}): JSX.Element => {
+}): React.JSX.Element => {
     const [fields, setFields] = useState(() => {
-        const fieldValues: { [key: string]: FieldValue } = {};
-        for (let i = 0; i < inputConfig.length; i++) {
-            fieldValues[inputConfig[i].id] = inputConfig[i].initialValue ?? '';
+        const fieldValues: Record<string, FieldValue> = {};
+        for (const config of inputConfig) {
+            fieldValues[config.id] = config.initialValue ?? '';
         }
         return fieldValues;
     });

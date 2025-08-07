@@ -3,7 +3,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
 
-import packageJson from "./package.json" assert { type: "json" };
+import packageJson from "./package.json" with { type: "json" };
 
 export default [
   {
@@ -24,7 +24,10 @@ export default [
     plugins: [
       resolve(),
       commonjs(),
-      typescript({ tsconfig: "./tsconfig.json" }),
+      typescript({ 
+        tsconfig: "./tsconfig.json",
+        declaration: false
+      }),
     ],
     onwarn: (warning, warn) => {
       if (
@@ -37,8 +40,9 @@ export default [
     }
   },
   {
-    input: "dist/esm/types/index.d.ts",
+    input: "src/index.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
+    external: [...Object.keys(packageJson.peerDependencies || {})]
   },
 ];

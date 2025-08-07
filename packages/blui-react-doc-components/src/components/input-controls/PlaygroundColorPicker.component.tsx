@@ -26,10 +26,10 @@ const colorIsValid = (color: string, useMui = false): boolean => {
     try {
         Color(color);
         return true;
-    } catch (e) {
+    } catch {
         if (useMui) {
-            for (let i = 0; i < muiRegex.length; i++) {
-                if (muiRegex[i].test(color)) {
+            for (const regex of muiRegex) {
+                if (regex.test(color)) {
                     return true;
                 }
             }
@@ -42,7 +42,7 @@ export const PlaygroundColorPicker: React.FC<PlaygroundColorInput> = (props) => 
     const { allowMuiColors = false, ...otherProps } = props;
     const { updateData } = usePlaygroundValues();
 
-    const [color, setColor] = useState<string>(props.initialValue || '');
+    const [color, setColor] = useState<string>(props.initialValue ?? '');
 
     const handleColorChange = useCallback(
         (e: ChangeEvent<HTMLInputElement>): void => {
@@ -58,7 +58,7 @@ export const PlaygroundColorPicker: React.FC<PlaygroundColorInput> = (props) => 
 
     // cancel the debounce event if we unmount before it executes
     useEffect(
-        () => () => {
+        (): (() => void) => () => {
             handleColorChangeDebounced.cancel();
         },
         [handleColorChangeDebounced]
