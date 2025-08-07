@@ -1002,7 +1002,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@brightlayer-ui/react-doc-components@^2.0.0, @brightlayer-ui/react-doc-components@workspace:packages/blui-react-doc-components":
+"@brightlayer-ui/react-doc-components@^3.0.0-alpha.0, @brightlayer-ui/react-doc-components@workspace:packages/blui-react-doc-components":
   version: 0.0.0-use.local
   resolution: "@brightlayer-ui/react-doc-components@workspace:packages/blui-react-doc-components"
   dependencies:
@@ -8636,7 +8636,7 @@ __metadata:
     "@brightlayer-ui/icons-mui": ^4.0.0
     "@brightlayer-ui/prettier-config": ^1.0.3
     "@brightlayer-ui/react-components": ^8.0.0
-    "@brightlayer-ui/react-doc-components": ^2.0.0
+    "@brightlayer-ui/react-doc-components": ^3.0.0-alpha.0
     "@brightlayer-ui/react-themes": ^9.0.0
     "@emotion/react": ^11.10.8
     "@emotion/styled": ^11.10.5
