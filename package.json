@@ -9,6 +9,12 @@
     "demos/*"
   ],
   "scripts": {
-    "start": "cd demos/storybook && yarn storybook"
+    "start": "cd demos/storybook && yarn storybook",
+    "prepare": "husky",
+    "prettier:check": "yarn workspace @brightlayer-ui/react-doc-components prettier:check",
+    "lint": "yarn workspace @brightlayer-ui/react-doc-components lint"
+  },
+  "dependencies": {
+    "husky": "^9.1.7"
   }
 }
