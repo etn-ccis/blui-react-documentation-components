@@ -14,7 +14,7 @@
     "prettier:check": "yarn workspace @brightlayer-ui/react-doc-components prettier:check",
     "lint": "yarn workspace @brightlayer-ui/react-doc-components lint"
   },
-  "dependencies": {
+  "devDependencies": {
     "husky": "^9.1.7"
   }
 }
